@@ -18,7 +18,11 @@ namespace nothinbutdotnetprep.utility.filtering
 
         public IMatchA<ItemToFilter> between(PropertyType start,PropertyType end)
         {
-            throw new NotImplementedException();
+			return new AnonymousMatch<ItemToFilter>(x =>
+			                                        {
+			                                        	var actual = accessor(x);
+			                                        	return actual.CompareTo(start) >= 0 && actual.CompareTo(end) < 0;
+			                                        });
         }
     }
 }
