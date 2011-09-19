@@ -12,6 +12,11 @@ namespace nothinbutdotnetprep.collections
         public int rating { get; set; }
         public DateTime date_published { get; set; }
 
+		public override string ToString()
+		{
+			return string.Format("{0} ({1})", title, date_published.Year);
+		}
+
         public bool Equals(Movie other)
         {
             if (other == null) return false;
