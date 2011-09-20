@@ -328,7 +328,7 @@ namespace nothinbutdotnetprep.specs
                 //Dreamworks
                 //Universal
                 //Disny
-                List<Movie> results = sut.all_movies()
+                var results = sut.all_movies()
 					.sort()
 					.by(x => x.production_studio,
                     ProductionStudio.MGM,

@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using nothinbutdotnetprep.collections;
 
 namespace nothinbutdotnetprep.utility.sorting
 {
-    public class OrderExtensionPoint<ItemToSort>
+    public class OrderExtensionPoint<ItemToSort> : IEnumerable<ItemToSort>
     {
     	private readonly IEnumerable<ItemToSort> _items;
 		private IComparer<ItemToSort> _orderBy;
@@ -42,5 +43,15 @@ namespace nothinbutdotnetprep.utility.sorting
 		{
 			return m.to_list();
 		}
+
+    	public IEnumerator<ItemToSort> GetEnumerator()
+    	{
+    		return to_list().GetEnumerator();
+    	}
+
+    	IEnumerator IEnumerable.GetEnumerator()
+    	{
+    		return GetEnumerator();
+    	}
     }
 }
