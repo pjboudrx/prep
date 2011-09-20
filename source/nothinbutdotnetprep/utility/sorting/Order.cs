@@ -14,12 +14,12 @@ namespace nothinbutdotnetprep.utility.sorting
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor)
             where PropertyType : IComparable<PropertyType>
         {
-            return new ComparableComparer<>(accessor);
+        	return new PropertyComparer<ItemToSort, PropertyType>(accessor, new ComparableComparer<PropertyType>());
         }
 
         public static IComparer<ItemToSort> by<PropertyType>(Func<ItemToSort, PropertyType> accessor, params PropertyType[] rankings)
         {
-            return new PropertyComparer<ItemToSort,PropertyType>(accessor,new RankedComparer< PropertyType>(rankings);
+        	return new PropertyComparer<ItemToSort, PropertyType>(accessor, new RankedComparer<PropertyType>(rankings));
         }
     }
 }
